@@ -1,6 +1,7 @@
 import sys
 import pygame
 from rain import Raindrop, WIDTH, HEIGHT
+from env import draw_scene
 
 #Setting up window using pygame
 pygame.init()
@@ -16,13 +17,15 @@ spawn_interval = 0.05
 
 while running:
 
+    dt = clock.tick(FPS) / 1000.0
+
     #Closing the Window Function
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running=False
 
     #updating the rain
-    spawn_timer += clock.tick(FPS)/1000
+    spawn_timer += dt
     while spawn_timer >= spawn_interval:
         raindrops.append(Raindrop())
         spawn_timer -= spawn_interval
@@ -34,8 +37,8 @@ while running:
     # remove raindrop that ends
     raindrops = [d for d in raindrops if not d.off_screen()]
 
-    #drawing raindrops
-    screen.fill((20,20,40))
+    #drawing static environment with raindrops 
+    draw_scene(screen,WIDTH,HEIGHT)
 
     #multiple raindrops
     for drop in raindrops:
