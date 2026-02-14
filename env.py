@@ -1,25 +1,43 @@
 # scene.py
 import pygame
 
-def draw_scene(surface, width, height):
+
+def draw_scene(surface, width, height, intensity: float):
+    """
+    Draw the static environment plus a sky whose color depends on rain intensity.
+
+    intensity: value in [0.0, 1.0]
+        0.0 -> clear / bright sky
+        1.0 -> dark / stormy sky
+    """
+    # Clamp intensity for safety
+    intensity = max(0.0, min(1.0, intensity))
+
     # Colors
-    SKY_COLOR = (20, 20, 40)      # will later change with intensity
+    # Sky color is interpolated between a clear blue and a dark stormy tone
+    CLEAR_SKY = (135, 206, 235)   # light blue
+    STORMY_SKY = (20, 20, 40)     # dark blue/grey
+
+    def lerp(c1, c2, t):
+        return tuple(int(c1[i] + (c2[i] - c1[i]) * t) for i in range(3))
+
+    SKY_COLOR = lerp(CLEAR_SKY, STORMY_SKY, intensity)
+
     GROUND_COLOR = (40, 80, 40)
     HOUSE_COLOR = (180, 160, 140)
     ROOF_COLOR = (140, 70, 40)
     GUTTER_COLOR = (120, 120, 130)
     PIPE_COLOR = (120, 120, 130)
     TANK_FRONT = (60, 100, 160)
-    TANK_SIDE = (40, 70, 120)
 
     surface.fill(SKY_COLOR)
 
     # Ground strip
-    ground_rect = pygame.Rect(0, height - 175, width, 200)
+    ground_rect = pygame.Rect(0, height - 200, width, 200)
     pygame.draw.rect(surface, GROUND_COLOR, ground_rect)
 
     # House body
-    house_rect = pygame.Rect(150, 320, 200, 180)  # x, y, w, h
+    house_rect = pygame.Rect(150, 300, 200, 180)  # x, y, w, h
     pygame.draw.rect(surface, HOUSE_COLOR, house_rect)
 
     # Roof as trapezoid (pseudo-3D)
