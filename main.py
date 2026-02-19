@@ -12,6 +12,7 @@ FPS = 60
 
 def load_img(name, size):
         return pygame.transform.scale(pygame.image.load(f"assets/{name}.png").convert_alpha(), size)
+
 # Image Path
 IMG_GROUND = load_img("ground",     (1000, 200))
 IMG_HOUSE  = load_img("house",      (250, 220))  
