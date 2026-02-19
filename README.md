@@ -22,7 +22,6 @@ This project specifically avoids high-level drawing libraries for core primitive
 
 - Clone the repository:
 git clone https://github.com/BisheshK/rainwater_simulation.git
-cd rainwater_simulation
 
 - Install dependencies (make sure you have Python 3 and Pygame):
 pip install pygame
