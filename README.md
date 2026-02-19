@@ -34,8 +34,8 @@ python main.py
 2) Water Toggle Button: Switch watering system on/off
 3) Use the UI panel to interact during runtime
 
-🛠 Project Structure
-main.py — Main simulation loop & UI handlers
-rain.py — Raindrop logic and physics
-env.py — Scene drawing and environment setup
-assets/ — Images for ground, roof, tank, etc.
+🛠 Project Structure:
+- main.py —> Main simulation loop & UI handlers
+- rain.py —> Raindrop logic and physics
+- env.py —> Scene drawing and environment setup
+- assets/ —> Images for ground, roof, tank, etc.
