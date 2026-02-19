@@ -1,4 +1,4 @@
-# Title: RainWater Simulation #
+## Title: Rainwater Simulation ##
 
 Introduction:
 This project is an interactive rainwater harvesting simulation built with Python and Pygame, designed to visually demonstrate how rainfall can be collected and managed in a simple environment. The simulation allows users to control rain intensity and activate a basic watering system to understand how rainfall contributes to storage (e.g., water tank) over time.
