@@ -1,7 +1,7 @@
 import pygame
 import random
 
-WIDTH, HEIGHT = 1200,600
+WIDTH, HEIGHT = 1000,600
 
 class Raindrop:
     def __init__(rain):
